@@ -3,7 +3,7 @@ import { GiHamburgerMenu } from "react-icons/gi";
 
 const Sidebar = () => {
 
-  const [collapsed, setCollapsed ] = useState(false);
+  const [collapsed, setCollapsed ] = useState(true);
 
   const sidebarItems = ['Tablero', 'Opciones', 'Perfil', 'Salir'];
 

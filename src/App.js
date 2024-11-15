@@ -7,7 +7,6 @@ import Modal from './components/Modal';
 
 function App() {
 
-
   const [modalData, setModalData] = useState(null);
 
   const handleFormSubmit = (data) => {

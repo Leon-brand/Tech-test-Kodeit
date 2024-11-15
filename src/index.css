@@ -28,7 +28,6 @@ body {
   background: linear-gradient(to right, #4f6d7a, #2c3e50);
   color: white;
   padding: 12px;
-  /* box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); */
 }
 
 .navbar-up {
@@ -54,7 +53,6 @@ progress {
   background: linear-gradient(to right, #4f6d7a, #2c3e50);
   color: white;
   padding: 20px;
-/*   border-radius: 8px; */
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
@@ -95,7 +93,7 @@ progress {
 }
 
 .sidebar.collapsed .sidebar-list {
-  opacity: 0; /* Ocultar los elementos cuando está colapsada */
+  opacity: 0; /* Ocultar los elementos cuando está colasada */
 }
 
 .sidebar-item {
@@ -122,7 +120,7 @@ progress {
   transform: rotate(180deg); /* Girar el botón cuando está colapsada */
 }
 
-/* Formulario */
+/* Form */
 .form-container {
   flex: 1;
   padding: 20px;
@@ -136,12 +134,11 @@ progress {
 }
 
 select {
-  margin-right: 180px;
+  margin-right: 148px;
 }
 
 /* Botones de imagen */
 .button-container {
- /*  display: flex; */
   gap: 10px;
   margin-bottom: 20px;
 }
@@ -168,7 +165,7 @@ select {
   margin-top: 20px;
   margin-left: 420px;
   border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 4px rgb(63, 63, 63);
 }
 
 /* Contenedores de los campos */
@@ -182,11 +179,12 @@ select {
 
 .checkbox-container {
   padding: 9px;
-  margin-left: 360px;
+  margin-left: 320px;
   margin-top: 21px;
   border-radius: 8px;
-  width: 550px;
-  border: ridge;
+  width: 610px;
+  border: none;
+  box-shadow: 0 2px 4px rgb(63, 63, 63);
   display: flex;
 }
 
@@ -199,21 +197,39 @@ select {
   margin-right: 15px;
 }
 
-/* Estilos para el select y textarea */
+/*Contenedor lonks externos*/
+.links-container {
+  padding: 10px;
+  margin-left: 205px;
+  margin-top: 21px;
+  border-radius: 8px;
+  width: 610px;
+  border: none;
+  box-shadow: 0 2px 4px rgb(63, 63, 63);
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;  
+}
 
 .last-block-container {
   padding: 9px;
-  margin-left: 250px;
+  margin-left: 280px;
   margin-top: 21px;
   border-radius: 8px;
-  width: 780px;
-  border: ridge;
-  display: flex;
-  background-color: #fafafa;
+  width: 690px;
+  border: none;
+  box-shadow: 0 2px 4px rgb(63, 63, 63);
+  background-color: white;
+  display: inline-block;
 }
 
+.last-block-align {
+  display: flex;
+}
 
+/* Estilos para el select y textarea */
 select, textarea {
+  margin-left: 20px;
   width: 200px;
   padding: 10px;
   border-radius: 8px;
@@ -229,6 +245,7 @@ select:focus, textarea:focus {
 
 /* Botón de Submit */
 .submit-btn {
+  margin-left: 180px;
   padding: 12px 20px;
   background-color: #28a745;
   color: white;

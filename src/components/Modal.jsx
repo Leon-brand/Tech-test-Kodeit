@@ -1,12 +1,12 @@
-
-
 const Modal = ({ data }) => {
   return (
     <div className="modal-overlay">
       <div className="modal-content">
-        <h2>Form Data</h2>
+        <h2>Datos formulario</h2>
+        <p>
         <pre>{JSON.stringify(data, null, 2)}</pre>
-        <button className="close-btn" onClick={()=>{}}>Cerrar</button>
+        </p>        
+        <button className="close-btn" onClick={()=>{ window.location.reload() }}>Cerrar</button>
       </div>
     </div>
   );

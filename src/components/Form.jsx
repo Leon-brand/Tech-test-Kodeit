@@ -2,22 +2,17 @@ import { useState } from "react";
 
 const Form = ({ onFormSubmit }) => {
   const [selectedImage, setSelectedImage] = useState(null);
-  //const [checkboxValues, setCheckboxValues] = useState([]);
   const [responses, setResponses] = useState({
-    reactivo1: { 'Sí': false, 'No': false, 'No Aplica': false },
-    reactivo2: { 'Sí': false, 'No': false, 'No Aplica': false },
-    //reactivo3: { 'Sí': false, 'No': false, 'No Aplica': false },
-    //reactivo4: { 'Sí': false, 'No': false, 'No Aplica': false },
+    DigitIDColor: { 'Sí': false, 'No': false, 'No Aplica': false },
+    DatosCoinciden: { 'Sí': false, 'No': false, 'No Aplica': false },
+    InfoConsultaVigente: { 'Sí': false, 'No': false, 'No Aplica': false },
+    infoConsultaCoincideID: { 'Sí': false, 'No': false, 'No Aplica': false },
   });
-  const [selectedOption, setSelectedOption] = useState('');
+  const [expediente, setExpediente] = useState('');
+  const [respuesta, setRespuesta] = useState('');
+  const [motivo, setMotivo] = useState('');
   const [textAreaValue, setTextAreaValue] = useState('');
 
-/*   const handleCheckboxChange = (event) => {
-    const value = event.target.value;
-    setCheckboxValues((prev) =>
-      prev.includes(value) ? prev.filter((item) => item !== value) : [...prev, value]
-    );
-  }; */
   const handleCheckboxChange = (reactivo, option) => {
     setResponses((prevResponses) => ({
       ...prevResponses,
@@ -27,43 +22,33 @@ const Form = ({ onFormSubmit }) => {
       },
     }));
   };
-
-/*   const handleSubmit = () => {
-    const formData = {
-      selectedImage,
-      checkboxValues,
-      selectedOption,
-      textAreaValue,
-    };
-    onFormSubmit(formData);
-  }; */
   const handleSubmit = () => {
     const formData = {
       selectedImage,
-      reactivo1: Object.keys(responses.reactivo1).filter(option => responses.reactivo1[option]),
-      reactivo2: Object.keys(responses.reactivo2).filter(option => responses.reactivo2[option]),
-      //reactivo3: Object.keys(responses.reactivo3).filter(option => responses.reactivo3[option]),
-      //reactivo4: Object.keys(responses.reactivo4).filter(option => responses.reactivo4[option]),
-      selectedOption,
+      DigitIDColor: Object.keys(responses.DigitIDColor).filter(option => responses.DigitIDColor[option]),
+      DatosCoinciden: Object.keys(responses.DatosCoinciden).filter(option => responses.DatosCoinciden[option]),
+      InfoConsultaVigente: Object.keys(responses.InfoConsultaVigente).filter(option => responses.InfoConsultaVigente[option]),
+      infoConsultaCoincideID: Object.keys(responses.infoConsultaCoincideID).filter(option => responses.infoConsultaCoincideID[option]),
+      expediente,
+      respuesta,
+      motivo,
       textAreaValue,
     };
-    onFormSubmit(formData); // Enviar los datos al componente principal
+    onFormSubmit(formData); //Enviar los datos al comonente principal
   };
 
   return (
-    <div className="form-container">
-      {/* Imagen */}
+    <div className="form-container">    
       <div className="first-block-container">
         <div>
-          <label htmlFor="options"></label>
           <select
             id="options"
-            value={selectedOption}
-            onChange={(e) => setSelectedOption(e.target.value)}
+            value={expediente}
+            onChange={(e) => setExpediente(e.target.value)}
           >
             <option value="">Select</option>
-            <option value="Expediente Crédito">Expediente Crédito</option>
-            <option value="Expediente Captación">Expediente Captación</option>
+            <option value="Crédito">Expediente Crédito</option>
+            <option value="Captación">Expediente Captación</option>
           </select>
         </div>
         <div className="button-container">
@@ -75,8 +60,6 @@ const Form = ({ onFormSubmit }) => {
         </div>
       </div>
         {selectedImage && <img className="selected-image" src={`/images/${selectedImage}.jpg`} alt={selectedImage}/>}  
-
-      {/* Checkbox */}
       <div className="checkbox-container">
         <div>
           <p><strong>Seleciona tus respuestas de acuerdo a lo que ves en las fotografias</strong></p>
@@ -85,8 +68,8 @@ const Form = ({ onFormSubmit }) => {
             <label key={option} className="checkbox-label">
               <input
                 type="checkbox"
-                checked={responses.reactivo1[option]}
-                onChange={() => handleCheckboxChange('reactivo1', option)}
+                checked={responses.DigitIDColor[option]}
+                onChange={() => handleCheckboxChange('DigitIDColor', option)}
               />
               {option}
             </label>
@@ -97,76 +80,99 @@ const Form = ({ onFormSubmit }) => {
             <label key={option}className="checkbox-label">
               <input
                 type="checkbox"
-                checked={responses.reactivo2[option]}
-                onChange={() => handleCheckboxChange('reactivo2', option)}
+                checked={responses.DatosCoinciden[option]}
+                onChange={() => handleCheckboxChange('DatosCoinciden', option)}
               />
               {option}
             </label>
           ))}
         </div>        
       </div>
-
-      <h2>Aqui van lo links</h2>
-
+      <div className="first-block-container">
+        <h4>Links externos</h4>
+        <div className="links-container">
+            <a href="##">INE</a>
+            <a href="##">CURP</a>
+            <a href="##">SEPOMEX</a>
+            <a href="##">Otros</a>
+        </div>
+      </div>
       <div className="checkbox-container">
         <div>
-          <p><strong>Seleciona tus respuestas de acuerdo a lo que ves en las fotografias</strong></p>
-          <label className="gray-font">¿La digitalización de la ID está a color?  </label>
+          <p><strong>Seleciona tus respuestas de acuerdo al resultado de la búsqueda</strong></p>
+          <label className="gray-font">¿La información de vuelta por tus consultas es vigente?  </label>
           {['Sí', 'No', 'No aplica'].map((option) => (
             <label key={option} className="checkbox-label">
               <input
                 type="checkbox"
-                checked={responses.reactivo1[option]}
-                onChange={() => handleCheckboxChange('reactivo1', option)}
+                checked={responses.InfoConsultaVigente[option]}
+                onChange={() => handleCheckboxChange('InfoConsultaVigente', option)}
               />
               {option}
             </label>
           ))}<br/>
          
-          <label className="gray-font">¿Los datos en ambas ID, expediente y digitalizada coinciden?  </label>
+          <label 
+            className="gray-font">
+              ¿La información de vuelta por tus consultas coinciden con la ID del cliente?
+          </label>
           {['Sí', 'No', 'No aplica'].map((option) => (
             <label key={option}className="checkbox-label">
               <input
                 type="checkbox"
-                checked={responses.reactivo2[option]}
-                onChange={() => handleCheckboxChange('reactivo2', option)}
+                checked={responses.infoConsultaCoincideID[option]}
+                onChange={() => handleCheckboxChange('infoConsultaCoincideID', option)}
               />
               {option}
             </label>
           ))}
         </div>        
       </div>
+      <div className="last-block-container">
+        <div><h4>RESPUESTA DE SOLICITUD</h4></div>
+        <div className="last-block-align">
+          <label>Respuesta</label>        
+          <div className="select-container">            
+            <select
+              id="options2"
+              value={respuesta}
+              onChange={(e) => setRespuesta(e.target.value)}
+            >
+              <option value="">Select</option>
+              <option value="Aprobada">Aprobada</option>
+              <option value="Rechazada">Rechazada</option>
+            </select>
+          </div>
+          <div className="textarea-container">            
+            <textarea
+              id="message"
+              value={textAreaValue}
+              placeholder="Observaciones ..."
+              onChange={(e) => setTextAreaValue(e.target.value)}
+            />
+          </div>
+        </div>
+        <div className="last-block-align">
+          <label>Motivo</label>
+            <div className="select-container">            
+            <select
+              id="options3"
+              value={motivo}
+              onChange={(e) => setMotivo(e.target.value)}
+            >
+              <option value="">Select</option>
+              <option value="Foto no coincide">Fotografía no coincide</option>
+              <option value="Foto no valida">Fotografía borrosa o manipulada</option>
+              <option value="Foto no visible">Fotografía no visible</option>
+            </select>
+          </div>
+          <div>
+            <button className="submit-btn" onClick={handleSubmit}>
+              Finalizar
+            </button> 
+          </div>
+        </div>  
 
-    <div className="last-block-container">
-      <label><strong>RESPUESTA DE SOLICITUD</strong></label>
-      {/* Select */}
-      <div className="select-container">
-        <label htmlFor="options"></label>
-        <select
-          id="options"
-          value={selectedOption}
-          onChange={(e) => setSelectedOption(e.target.value)}
-        >
-          <option value="">--Select--</option>
-          <option value="Option A">Option A</option>
-          <option value="Option B">Option B</option>
-          <option value="Option C">Option C</option>
-        </select>
-      </div>
-
-      {/* Textarea */}
-      <div className="textarea-container">
-        <label htmlFor="message">Your message:</label>
-        <textarea
-          id="message"
-          value={textAreaValue}
-          onChange={(e) => setTextAreaValue(e.target.value)}
-        />
-      </div>
-
-      <button className="submit-btn" onClick={handleSubmit}>
-        Finalizar
-      </button>  
       </div>    
     </div>
   );
