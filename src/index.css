@@ -198,8 +198,7 @@ select {
 }
 
 /*Contenedor lonks externos*/
-.links-container {
-  padding: 10px;
+.links-container {  
   margin-left: 205px;
   margin-top: 21px;
   border-radius: 8px;
@@ -208,7 +207,15 @@ select {
   box-shadow: 0 2px 4px rgb(63, 63, 63);
   display: flex;
   justify-content: space-between;
-  cursor: pointer;  
+  cursor: pointer;
+  font-size: 18px;
+  background: linear-gradient(to right, #4f6d7a, #2c3e50); 
+  padding: 12px; 
+}
+
+a {
+  color: #ffff;
+  padding: 10px;
 }
 
 .last-block-container {
